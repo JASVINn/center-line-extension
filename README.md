@@ -1,5 +1,7 @@
 # Center Lines Overlay
 
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/ahlnakgedgfgjcgdcfciohooicapfiji?label=Chrome%20Web%20Store)](https://chromewebstore.google.com/detail/center-lines-overlay/ahlnakgedgfgjcgdcfciohooicapfiji)
+[![Users](https://img.shields.io/chrome-web-store/users/ahlnakgedgfgjcgdcfciohooicapfiji?label=users)](https://chromewebstore.google.com/detail/center-lines-overlay/ahlnakgedgfgjcgdcfciohooicapfiji)
 A Chrome extension for overlaying center lines and advanced grid systems on any website. Useful for designers, developers, and anyone who needs to check alignment, spacing, or layout structure.
 
 ![center-line-overlay](https://github.com/user-attachments/assets/a35fd4de-908f-4dee-ba8a-62b4f1649db9)
@@ -15,6 +17,10 @@ A Chrome extension for overlaying center lines and advanced grid systems on any 
 - Minimize/restore panel and persistent settings
 
 ## Install
+Recommended:
+- Install from the Chrome Web Store: https://chromewebstore.google.com/detail/center-lines-overlay/ahlnakgedgfgjcgdcfciohooicapfiji
+
+Alternative (unpacked):
 1. Go to chrome://extensions and enable Developer mode.
 2. Click "Load unpacked" and select this folder.
 
