@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ## [1.0.0] - 2025-09-17
 
+-
+
+## [1.0.1] - 2025-09-17
+
+### Changed
+
+- Bump manifest version for Chrome Web Store upload (from 1.0.0 to 1.0.1)
+- Minor README/workflow improvements
+
 ### Added
 
 - Toggle behavior: clicking the extension icon again closes the overlay
