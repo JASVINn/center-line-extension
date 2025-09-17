@@ -50,7 +50,6 @@ Tips
 
 - **Center Only**: Shows only the center lines
 - **Fractional**: Divide the area into equal parts (e.g., halves, thirds, quarters)
-- **Golden Ratio**: Shows lines at 61.8% and 38.2%
 - **Pixel**: Grid lines every N pixels
 - **REM**: Grid lines every N rem units
 - **Viewport**: Grid lines every N vw/vh units
