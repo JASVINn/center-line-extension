@@ -27,10 +27,17 @@
     showGrid: true,
   };
 
-  // Remove overlays if present
-  document
-    .querySelectorAll(`#${overlayId}, #${panelId}`)
-    .forEach((el) => el.remove());
+  // Toggle: if overlay/panel already exist, remove and exit (close on second click)
+  const existingOverlay = document.getElementById(overlayId);
+  const existingPanel = document.getElementById(panelId);
+  const existingMinIcon = document.getElementById(minimizedIconId);
+  if (existingOverlay || existingPanel || existingMinIcon) {
+    if (existingOverlay) existingOverlay.remove();
+    if (existingPanel) existingPanel.remove();
+    if (existingMinIcon) existingMinIcon.remove();
+    document.querySelectorAll(".grid-area-handle").forEach((e) => e.remove());
+    return; // do not recreate; acts as toggle off
+  }
 
   // Create overlay
   const overlay = document.createElement("div");
@@ -39,10 +46,10 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    right: 0;
+    bottom: 0;
     pointer-events: none;
-    z-index: 9999;
+    z-index: 10000;
   `;
   document.body.appendChild(overlay);
 
@@ -61,7 +68,7 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      z-index: 10001;
+      z-index: 10003;
       box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
       transition: all 0.2s ease;
       font-size: 20px;
@@ -103,7 +110,7 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 14px;
     user-select: none;
-    z-index: 10000;
+    z-index: 10002;
     pointer-events: auto;
     width: 340px;
     max-width: calc(100vw - 40px);
@@ -523,7 +530,7 @@
         },
       },
     ];
-    const handleZ = getPanelZIndex() - 1;
+    const handleZ = Math.max(getPanelZIndex() - 1, 10001);
     handles.forEach((h) => {
       const handle = document.createElement("div");
       handle.className = "grid-area-handle";
@@ -535,31 +542,92 @@
       Object.assign(handle.style, h.style);
       // Position handle
       if (h.axis === "x") {
-        handle.style.left = h.prop === "x1" ? areaSelection.x1 + "px" : "";
-        handle.style.right =
-          h.prop === "x2" ? window.innerWidth - areaSelection.x2 + "px" : "";
-        handle.style.top = areaSelection.y1 + "px";
-        handle.style.height = areaSelection.y2 - areaSelection.y1 + "px";
-      } else if (h.axis === "y") {
-        handle.style.top = h.prop === "y1" ? areaSelection.y1 + "px" : "";
+        const clampedX1 = Math.max(
+          0,
+          Math.min(window.innerWidth, areaSelection.x1)
+        );
+        const clampedX2 = Math.max(
+          0,
+          Math.min(window.innerWidth, areaSelection.x2)
+        );
+        // Position vertically using top/bottom to avoid height rounding issues
+        const clampedY1 = Math.max(
+          0,
+          Math.min(window.innerHeight, areaSelection.y1)
+        );
+        const clampedY2 = Math.max(
+          0,
+          Math.min(window.innerHeight, areaSelection.y2)
+        );
+        handle.style.top = clampedY1 + "px";
         handle.style.bottom =
-          h.prop === "y2" ? window.innerHeight - areaSelection.y2 + "px" : "";
-        handle.style.left = areaSelection.x1 + "px";
-        handle.style.width = areaSelection.x2 - areaSelection.x1 + "px";
+          Math.max(0, window.innerHeight - clampedY2) + "px";
+        // Position horizontally: left for x1, right for x2
+        handle.style.left = h.prop === "x1" ? clampedX1 + "px" : "";
+        handle.style.right =
+          h.prop === "x2"
+            ? Math.max(0, window.innerWidth - clampedX2) + "px"
+            : "";
+      } else if (h.axis === "y") {
+        const clampedY1 = Math.max(
+          0,
+          Math.min(window.innerHeight, areaSelection.y1)
+        );
+        const clampedY2 = Math.max(
+          0,
+          Math.min(window.innerHeight, areaSelection.y2)
+        );
+        // Position horizontally using left/right to avoid width rounding issues
+        const clampedX1 = Math.max(
+          0,
+          Math.min(window.innerWidth, areaSelection.x1)
+        );
+        const clampedX2 = Math.max(
+          0,
+          Math.min(window.innerWidth, areaSelection.x2)
+        );
+        handle.style.left = clampedX1 + "px";
+        handle.style.right = Math.max(0, window.innerWidth - clampedX2) + "px";
+        // Position vertically: top for y1, bottom for y2
+        handle.style.top = h.prop === "y1" ? clampedY1 + "px" : "";
+        handle.style.bottom =
+          h.prop === "y2"
+            ? Math.max(0, window.innerHeight - clampedY2) + "px"
+            : "";
       } else if (h.corner) {
         // Corners: set both axes
+        const clampedX1 = Math.max(
+          0,
+          Math.min(window.innerWidth, areaSelection.x1)
+        );
+        const clampedX2 = Math.max(
+          0,
+          Math.min(window.innerWidth, areaSelection.x2)
+        );
+        const clampedY1 = Math.max(
+          0,
+          Math.min(window.innerHeight, areaSelection.y1)
+        );
+        const clampedY2 = Math.max(
+          0,
+          Math.min(window.innerHeight, areaSelection.y2)
+        );
         if (h.corner === "tl") {
-          handle.style.left = areaSelection.x1 + "px";
-          handle.style.top = areaSelection.y1 + "px";
+          handle.style.left = clampedX1 + "px";
+          handle.style.top = clampedY1 + "px";
         } else if (h.corner === "tr") {
-          handle.style.right = window.innerWidth - areaSelection.x2 + "px";
-          handle.style.top = areaSelection.y1 + "px";
+          handle.style.right =
+            Math.max(0, window.innerWidth - clampedX2) + "px";
+          handle.style.top = clampedY1 + "px";
         } else if (h.corner === "bl") {
-          handle.style.left = areaSelection.x1 + "px";
-          handle.style.bottom = window.innerHeight - areaSelection.y2 + "px";
+          handle.style.left = clampedX1 + "px";
+          handle.style.bottom =
+            Math.max(0, window.innerHeight - clampedY2) + "px";
         } else if (h.corner === "br") {
-          handle.style.right = window.innerWidth - areaSelection.x2 + "px";
-          handle.style.bottom = window.innerHeight - areaSelection.y2 + "px";
+          handle.style.right =
+            Math.max(0, window.innerWidth - clampedX2) + "px";
+          handle.style.bottom =
+            Math.max(0, window.innerHeight - clampedY2) + "px";
         }
       }
       // Drag logic
@@ -632,6 +700,23 @@
             areaSelection.y2,
             areaSelection.y1,
           ];
+        // Clamp to viewport after drag
+        areaSelection.x1 = Math.max(
+          0,
+          Math.min(window.innerWidth, areaSelection.x1)
+        );
+        areaSelection.x2 = Math.max(
+          0,
+          Math.min(window.innerWidth, areaSelection.x2)
+        );
+        areaSelection.y1 = Math.max(
+          0,
+          Math.min(window.innerHeight, areaSelection.y1)
+        );
+        areaSelection.y2 = Math.max(
+          0,
+          Math.min(window.innerHeight, areaSelection.y2)
+        );
         createRulerHandles();
         renderGrid();
       });
@@ -706,6 +791,24 @@
     // Update opacity display
     document.getElementById("opacityValue").textContent =
       Math.round(settings.opacity * 100) + "%";
+
+    // Ensure area selection stays within current viewport
+    areaSelection.x1 = Math.max(
+      0,
+      Math.min(window.innerWidth, areaSelection.x1)
+    );
+    areaSelection.x2 = Math.max(
+      0,
+      Math.min(window.innerWidth, areaSelection.x2)
+    );
+    areaSelection.y1 = Math.max(
+      0,
+      Math.min(window.innerHeight, areaSelection.y1)
+    );
+    areaSelection.y2 = Math.max(
+      0,
+      Math.min(window.innerHeight, areaSelection.y2)
+    );
 
     // Restrict grid to area selection if enabled
     let gridArea = {
@@ -1185,4 +1288,46 @@
 
   // Initial render
   renderGrid();
+
+  // Re-render grid and handles on window resize
+  window.addEventListener("resize", () => {
+    // If area selection disabled, reset to full viewport
+    if (!areaSelection.enabled) {
+      areaSelection.x1 = 0;
+      areaSelection.y1 = 0;
+      areaSelection.x2 = window.innerWidth;
+      areaSelection.y2 = window.innerHeight;
+    } else {
+      // Clamp within viewport
+      areaSelection.x1 = Math.max(
+        0,
+        Math.min(window.innerWidth, areaSelection.x1)
+      );
+      areaSelection.x2 = Math.max(
+        0,
+        Math.min(window.innerWidth, areaSelection.x2)
+      );
+      areaSelection.y1 = Math.max(
+        0,
+        Math.min(window.innerHeight, areaSelection.y1)
+      );
+      areaSelection.y2 = Math.max(
+        0,
+        Math.min(window.innerHeight, areaSelection.y2)
+      );
+    }
+    createRulerHandles();
+    renderGrid();
+  });
+
+  // Re-render grid and handles on window resize
+  window.addEventListener("resize", () => {
+    // Update area selection bounds if not enabled
+    if (!areaSelection.enabled) {
+      areaSelection.x2 = window.innerWidth;
+      areaSelection.y2 = window.innerHeight;
+    }
+    createRulerHandles();
+    renderGrid();
+  });
 })();
