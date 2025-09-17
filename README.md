@@ -2,6 +2,8 @@
 
 A Chrome extension for overlaying center lines and advanced grid systems on any website. Useful for designers, developers, and anyone who needs to check alignment, spacing, or layout structure.
 
+![center-line-overlay](https://github.com/user-attachments/assets/a35fd4de-908f-4dee-ba8a-62b4f1649db9)
+
 ## Features
 
 - Horizontal and vertical center lines
